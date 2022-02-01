@@ -22,16 +22,49 @@ export default class SortingVisualizer extends React.Component {
         this.setState({array});
     }
 
+    // Sorting Algorithms
+    mergeSort(array) {
+
+    }
+
+    quickSort(array) {
+
+    }
+
+    heapSort(array) {
+
+    }
+
+    bubbleSort(array) {
+        for (let i = 0; i < array.length; i++) {
+            for (let j = 0; i < array.length - i - 1; j++) {
+                if (array[j + 1] < array[j]) {
+                    [array[j + 1], array[j]] = [array[j], array[j + 1]]
+                }
+            }
+        };
+        return array;
+    }
+
     render() {
         const {array} = this.state;
 
         return (
             <>
-                {array.map((value, idx) => (
-                    <div className="array-bar" key={idx}>
-                        {value}
-                    </div>
-                ))}
+                <div className="array-container">
+                    {array.map((value, idx) => (
+                        <div 
+                        className="array-bar" 
+                        key={idx}
+                        style={{height: `${value}px`}}>
+                        </div>
+                    ))}
+                    <button onClick={() => this.resetArray()}>Generate New Array</button>
+                    <button onClick={() => this.mergeSort()}>Merge Sort</button>
+                    <button onClick={() => this.quickSort()}>Quick New Sort</button>
+                    <button onClick={() => this.heapSort()}>Heap New Sort</button>
+                    <button onClick={() => this.bubbleSort()}>Bubble New Sort</button>
+                </div>
             </>
         );
     }
